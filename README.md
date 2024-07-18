@@ -1,4 +1,4 @@
-Hblogs - Microblogging Platform
+<h1>Hblogs - Microblogging Platform</h1>
 
 Introduction
 
