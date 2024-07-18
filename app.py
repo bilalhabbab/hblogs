@@ -3,14 +3,12 @@ from flask import Flask, render_template, request
 from pymongo import MongoClient
 import certifi
 
-# Specify the CA certificate using certifi for SSL connection
 ca = certifi.where()
 
 # Initialize MongoClient with the certifi CA certificate for secure connection
 client = MongoClient("", tlsCAFile=ca)
 
 app = Flask(__name__)
-# Ensure that we don't reinitialize MongoClient without certifi
 db = client.microblog
 entries = []
 
