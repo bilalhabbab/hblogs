@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: blanchedalmond;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent Posts</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        .no-decor {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+        }
+        .navbar__brand a:hover, .navbar__brand a:focus {
+            text-decoration: none;
+            color: inherit; 
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar__brand">
+            <a href="/" class="no-decor">
+                <img class="navbar__logo" src="../static/hblogo.jpg" alt="The MicroBlog Logo"/>
+                Hblogs
+            </a>
+        </div>
+        <ul class="navbar__navigation">
+            <li class="navbar__navigation-item"><a href="/recent" class="navbar__link" style="border: 2px solid #e11818">Recent</a></li>
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Calendar</a></li>
+        </ul>
+    </header>
+    <section class="recent-posts">
+        <h1>Recent Posts</h1>
+        {% for entry in entries %}
+            <article class="entry">
+                <div>
+                    <h2 class="entry__title">{{ entry.title | truncate(30, true) }}</h2>
+                    <span class="entry__date-time">
+                        <time class="entry__date" datetime="{{ entry.date }}">
+                            • {{ entry.date }}
+                            <span class="entry__date-detail">{{ entry.time }}</span>
+                        </time>
+                    </span>
+                </div>
+                <p class="entry__content">{{ entry.content }}</p>
+            </article>
+        {% endfor %}
+    </section>
+</body>
+</html>
