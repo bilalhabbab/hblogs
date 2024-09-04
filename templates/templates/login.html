@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .logo-container {
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 260px;
+            height: 260px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin: 10px;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            border: 1px solid aqua;
+        }
+        form {
+            width: 100%;
+            max-width: 300px;
+        }
+        input[type=email], input[type=password], button, .social-button {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #15c1d7;
+            border-radius: 4px;
+        }
+        .social-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .social-button:hover {
+            background-color: #0056b3;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+        @media (max-width: 1000px) {
+            .container {
+                flex-direction: column;
+                margin-top: 60px;
+            }
+            .logo-container, .form-container {
+                width: 80%;
+                margin: 40px auto;
+                padding: 10px;
+            }
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="/static/hblogo.jpg" alt="Hblogs Logo" style="height: 200px;">
+        </div>
+        <div class="form-container">
+            <h2>Login</h2>
+            <form method="post" action="/login">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" class="social-button">Login</button>
+            </form>
+            <button class="social-button" id="google-login-btn" type="button">Login with Google</button>
+            <button class="social-button" id="github-login-btn" type="button">Login with GitHub</button>
+            <div class="login-link">
+                <a href="/register">New to Hblogs? Sign up here!</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyCif-3JhPB0pfdF1S4qJlBmUixtkNG82wA",
+        authDomain: "h-blogs-cc4e0.firebaseapp.com",
+        projectId: "h-blogs-cc4e0",
+        storageBucket: "h-blogs-cc4e0.appspot.com",
+        messagingSenderId: "1107861240",
+        appId: "1:1107861240:web:5ba59655e180039e5fe50d"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById('google-login-btn').addEventListener('click', () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithRedirect(provider);
+    });
+
+    document.getElementById('github-login-btn').addEventListener('click', () => {
+        const provider = new firebase.auth.GithubAuthProvider();
+        auth.signInWithRedirect(provider);
+    });
+
+    auth.getRedirectResult().then((result) => {
+        if (result.user) {
+        console.log('User signed in: ', result.user);
+        }
+    }).catch((error) => {
+        console.error('Error during sign in: ', error);
+    });
+    </script>
+</body>
+</html>
