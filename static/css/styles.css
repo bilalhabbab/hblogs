@@ -1,0 +1,279 @@
+    html, body {
+        height: 100%; /* Make sure html and body are full height */
+        margin: 0; /* Remove default margin */
+        padding: 0; /* Remove default padding */
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+    }
+    
+    body {
+        min-height: 100vh; /* Ensure body takes at least the viewport height */
+        display: flex;
+        flex-direction: column; /* Ensures flex children are stacked vertically */
+    }
+    
+    .main {
+        flex-grow: 1; /* Allows main to expand and fill available space */
+    }
+    
+    .footer {
+        background-color: #323f43;
+        padding: 40px 0px;
+        margin-top: 50px;
+        border-top: 4px solid black;
+        color: white;
+        font-size: 12px;
+        flex-shrink: 0; /* Prevents the footer from shrinking */
+    } 
+
+
+html
+{
+    font-family: sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 24px;
+    background-color: #323f43;
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    justify-content: flex-start; /* Aligns content to the top */
+    align-items: center; /* Centers content horizontally */
+    width: 100%; /* Uses the full width available */
+    margin: 0 auto; /* Centers the main container itself horizontally */
+    padding: 20px; /* Adds padding around the content */
+}
+
+.navbar__brand {
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+    color: #18c1e1;
+    font-weight: bold;
+    font-family: "Outfit", sans-serif;
+}
+
+.navbar__logo {
+    margin-right: 30px;
+    color: white;
+    height: 50px;
+    border: 10px solid #18c1e1; /* Adds a solid border */
+    border-radius: 10px; /* Optional: adds rounded corners */
+}
+
+.navbar__navigation {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    list-style: none;
+    color: #18c1e1;
+    font-weight: bolder;
+    margin-right: 20%;
+}
+
+.navbar__navigation-item {
+    margin-left: 50px;
+}
+
+.navbar__link {
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid #18c1e1; /* Add border */
+    padding: 5px 10px; /* Add padding for visual comfort */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .navbar__navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar__navigation-item {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .navbar__brand {
+        margin-bottom: 20px; 
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.form__input {
+    width: 100%;
+}
+
+.form__label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form__textarea {
+    width: inherit;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    background-color: #f3f6f6;
+    margin-bottom: 10px;
+}
+
+.form__submit {
+    background-color: #3cd0ff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 5px 30px;
+    color: white;
+    margin-right: 20px;
+}
+
+.form__submit:hover {
+    background-color: #18c1e1;
+}
+
+.entry {
+    margin-top: 50px;
+}
+
+.entry__title {
+    display: inline;
+    font-size: 18px;
+}
+
+.entry__date {
+    color: #5c6b70;
+}
+
+.entry__content {
+    font-size: 16px;
+    line-height: 150%;
+}
+
+.footer {
+    background-color: #323f43;
+    padding: 40px 0px;
+    margin-top: 50px;
+    border-top: 4px solid black;
+    color: white;
+    font-size: 12px;
+}
+
+.footer_content {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer .left {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.footer .right {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer__column {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.footer__item {
+    margin-bottom: 5px;
+    color: inherit;
+    text-decoration: none;
+    padding: 5px 10px; /* Add padding for visual comfort */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+.footer__item:hover {
+    text-decoration: underline;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: center; /* Center the flex items horizontally */
+    align-items: flex-start; /* Align items to the top, not centering them vertically */
+    width: 100%; /* Use the full width of its container */
+    max-width: 1200px; /* Maximum width of the content wrapper */
+    flex-wrap: wrap; /* Allows items to wrap in smaller screens */
+}
+
+.new-entry, .recent-posts {
+    flex-grow: 1;
+    margin: 30px;
+    padding: 0px;
+    min-width: 300px; /* Ensures usability on smaller screens */
+    max-width: 60%; /* Prevents overly wide sections on large screens */
+}
+
+@media (max-width: 800px) {
+    .content-wrapper {
+        flex-direction: column; /* Stacks the flex children vertically on smaller screens */
+    }
+}
+
+
+.form__textarea {
+    width: inherit; /* Keeps the width setting as before */
+    font-size: 18px; /* Keeps the font size as before */
+    padding: 12px 20px; /* Keeps the padding as before */
+    background-color: #f3f6f6; /* Keeps the background color as before */
+    margin-bottom: 10px; /* Keeps the margin as before */
+    border: 2px solid #18c1e1; /* Adds a solid border with a light blue color */
+    border-radius: 8px; /* Optional: adds rounded corners for a smoother look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow for depth */
+}
+
+
+.entry__date-time .time {
+    display: none; /* Use display for hiding/showing for more robust behavior */
+    position: absolute;
+    z-index: 100; /* Higher z-index to ensure it's on top */
+    width: auto;
+    background-color: #000; /* Ensuring it's black */
+    color: #fff; /* Ensuring text is white */
+    text-align: center;
+    padding: 5px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.entry__date-time:hover .time {
+    display: block; /* Display block on hover */
+}
+
+#title {
+    width: 50%;
+}
